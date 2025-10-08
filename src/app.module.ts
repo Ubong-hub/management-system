@@ -41,6 +41,8 @@ import { TodolistModule } from './todolist/todolist.module';
         username: configService.getOrThrow('DB_USERNAME'),
         password: configService.getOrThrow('DB_PASSWORD'),
         database: configService.getOrThrow('DB_NAME'),
+        ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
+        autoLoadEntities: true,
         entities: [User],
         synchronize: true,
       }),
